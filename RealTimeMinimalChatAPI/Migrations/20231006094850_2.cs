@@ -1,0 +1,41 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace RealTimeMinimalChatAPI.Migrations
+{
+    /// <inheritdoc />
+    public partial class _2 : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_MessageReceivers_Messages_MessageId",
+                table: "MessageReceivers");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_MessageReceivers_Messages_MessageId",
+                table: "MessageReceivers",
+                column: "MessageId",
+                principalTable: "Messages",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_MessageReceivers_Messages_MessageId",
+                table: "MessageReceivers");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_MessageReceivers_Messages_MessageId",
+                table: "MessageReceivers",
+                column: "MessageId",
+                principalTable: "Messages",
+                principalColumn: "Id");
+        }
+    }
+}
